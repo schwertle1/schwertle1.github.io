@@ -4,21 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BLOKADOO – Blok Yıkma Oyunu</title>
-<meta name="description" content="BLOKADOO, Android için ücretsiz blok yıkma oyunudur.">
+<meta name="description" content="BLOKADOO, Android için ücretsiz blok yıkma oyunudur. Takip et, güncellemelerden haberdar ol!">
 <style>
-  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:#101828;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:24px}
-  h1{font-size:3rem;margin:.2em 0;letter-spacing:.1em}
-  p{max-width:32rem;line-height:1.6;color:#cbd5e1}
-  .btn{display:inline-block;margin-top:1.2em;padding:.8em 1.6em;border-radius:999px;color:#fff;text-decoration:none;font-weight:700;transition:transform .15s ease}
-  .btn:hover{transform:translateY(-2px)}
-  .ig{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf)}
-  small{color:#64748b;margin-top:3em}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#fff;background-color:#0b0b1e;background-position:center;background-size:cover;background-attachment:fixed;background-repeat:no-repeat}
+  .veil{position:fixed;inset:0;background:radial-gradient(ellipse at center,rgba(11,11,30,.25) 0%,rgba(11,11,30,.72) 100%);z-index:-1}
+  h1{font-size:clamp(2.4rem,6vw,3.6rem);margin:.2em 0;letter-spacing:.08em;text-shadow:0 0 18px rgba(236,72,153,.55),0 2px 6px rgba(0,0,0,.6)}
+  p{max-width:34rem;line-height:1.65;color:#e2e8f0;text-shadow:0 1px 4px rgba(0,0,0,.65)}
+  .ig{display:inline-flex;align-items:center;gap:.6em;margin-top:1.2em;padding:1em 2em;border-radius:999px;color:#fff;font-weight:800;letter-spacing:.02em;text-shadow:0 1px 3px rgba(0,0,0,.8);text-decoration:none;box-shadow:0 10px 30px rgba(214,41,118,.45),inset 0 0 0 2px rgba(255,255,255,.25);background-color:#d62976;background-position:center;background-size:cover;background-repeat:no-repeat;transition:transform .15s ease,box-shadow .15s ease}
+  .ig::before{content:"📸"}
+  .ig:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 14px 36px rgba(214,41,118,.65),inset 0 0 0 2px rgba(255,255,255,.4)}
+  small{color:#cbd5e1;margin-top:3em;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 </style>
 </head>
 <body>
+  <div class="veil"></div>
   <h1>BLOKADOO</h1>
   <p>Blok kır, seviyeleri aş, zirveye tırman! Android için ücretsiz.</p>
-  <a class="btn ig" href="https://www.instagram.com/eray_tas09" target="_blank" rel="noopener">Instagram'da takip et: @eray_tas09</a>
-  <small>© Eray Taş – blokoyunu</small>
+  <a class="ig" id="igbtn" href="https://www.instagram.com/eray_tas09" target="_blank" rel="noopener">Instagram'da takip et: @eray_tas09</a>
+  <small>© Eray Taş – Blokadoo</small>
+<script>
+(function(){
+  fetch('./bg64.txt').then(function(r){return r.ok?r.text():null}).then(function(b64){
+    if(!b64) return;
+    b64=b64.replace(/\s+/g,'');
+    if(!b64) return;
+    var url='data:image/jpeg;base64,'+b64;
+    document.body.style.backgroundImage='url('+url+')';
+    var ig=document.getElementById('igbtn');
+    if(ig) ig.style.backgroundImage='url('+url+')';
+  }).catch(function(){});
+})();
+</script>
 </body>
 </html>
