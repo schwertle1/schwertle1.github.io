@@ -4,35 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BLOKADOO – Blok Yıkma Oyunu</title>
-<meta name="description" content="BLOKADOO, Android için ücretsiz blok yıkma oyunudur. Takip et, güncellemelerden haberdar ol!">
+<meta name="description" content="BLOKADOO, Android için ücretsiz blok yıkma oyunudur. Google Play'den indir, güncellemelerden haberdar ol!">
+<meta name="theme-color" content="#0b0b1e">
 <style>
   *{box-sizing:border-box}
   body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#fff;background-color:#0b0b1e;background-position:center;background-size:cover;background-attachment:fixed;background-repeat:no-repeat}
-  .veil{position:fixed;inset:0;background:radial-gradient(ellipse at center,rgba(11,11,30,.25) 0%,rgba(11,11,30,.72) 100%);z-index:-1}
+  .veil{position:fixed;inset:0;background:radial-gradient(ellipse at center,rgba(11,11,30,.3) 0%,rgba(11,11,30,.75) 100%);z-index:-1;pointer-events:none}
   h1{font-size:clamp(2.4rem,6vw,3.6rem);margin:.2em 0;letter-spacing:.08em;text-shadow:0 0 18px rgba(236,72,153,.55),0 2px 6px rgba(0,0,0,.6)}
   p{max-width:34rem;line-height:1.65;color:#e2e8f0;text-shadow:0 1px 4px rgba(0,0,0,.65)}
-  .ig{display:inline-flex;align-items:center;gap:.6em;margin-top:1.2em;padding:1em 2em;border-radius:999px;color:#fff;font-weight:800;letter-spacing:.02em;text-shadow:0 1px 3px rgba(0,0,0,.8);text-decoration:none;box-shadow:0 10px 30px rgba(214,41,118,.45),inset 0 0 0 2px rgba(255,255,255,.25);background-color:#d62976;background-position:center;background-size:cover;background-repeat:no-repeat;transition:transform .15s ease,box-shadow .15s ease}
-  .ig::before{content:"📸"}
-  .ig:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 14px 36px rgba(214,41,118,.65),inset 0 0 0 2px rgba(255,255,255,.4)}
+  .btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center;margin-top:1.6em}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;padding:1em 1.9em;border:0;border-radius:999px;font-size:1rem;font-weight:800;line-height:1;letter-spacing:.02em;color:#fff;text-decoration:none;text-align:center;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+  .btn:hover{transform:translateY(-3px) scale(1.02)}
+  .btn:active{transform:translateY(0) scale(.99)}
+  .btn svg{flex:0 0 auto}
+  .play{background-color:#01875f;box-shadow:0 10px 30px rgba(1,135,95,.45),inset 0 0 0 2px rgba(255,255,255,.22)}
+  .ig{background-color:#d62976;box-shadow:0 10px 30px rgba(214,41,118,.45),inset 0 0 0 2px rgba(255,255,255,.22)}
+  .ig:hover{box-shadow:0 14px 36px rgba(214,41,118,.65),inset 0 0 0 2px rgba(255,255,255,.35)}
+  .mail{background-color:#334155;box-shadow:0 10px 30px rgba(51,65,85,.45),inset 0 0 0 2px rgba(255,255,255,.18)}
   small{color:#cbd5e1;margin-top:3em;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+  footer{margin-top:1.2em;font-size:.85rem}
+  footer a{color:#cbd5e1;text-decoration:none;border-bottom:1px dotted rgba(203,213,225,.5)}
 </style>
 </head>
 <body>
   <div class="veil"></div>
   <h1>BLOKADOO</h1>
   <p>Blok kır, seviyeleri aş, zirveye tırman! Android için ücretsiz.</p>
-  <a class="ig" id="igbtn" href="https://www.instagram.com/eray_tas09" target="_blank" rel="noopener">Instagram'da takip et: @eray_tas09</a>
+
+  <div class="btns">
+    <a class="btn play" id="playbtn" href="https://play.google.com/store/apps/details?id=com.blokoyunu" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#fff" d="M3.6 2.3c-.3.3-.5.8-.5 1.4v16.6c0 .6.2 1.1.5 1.4l.1.1 9.3-9.3v-.2L3.6 2.3zm12.4 12.3-3.1-3.1 3.1-3.1 3.7 2.1c1.1.6 1.1 1.5 0 2.1l-3.7 2zM4.6 22.1l9.4-9.4 3 3-9.4 5.4c-1.1.6-2.1.8-3 1z"/></svg>
+      Google Play'den indir
+    </a>
+    <a class="btn ig" id="igbtn" href="https://www.instagram.com/eray_tas09" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#fff" d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.3 2.2-.4 1.3-.1 1.7-.1 4.9-.1zm0 1.8c-3.1 0-3.5 0-4.8.1-1.1.1-1.6.2-2 .3-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.1.4-.3.9-.3 2-.1 1.3-.1 1.7-.1 4.8s0 3.5.1 4.8c.1 1.1.2 1.6.3 2 .2.5.4.8.7 1.1.3.3.6.5 1.1.7.4.1.9.3 2 .3 1.3.1 1.7.1 4.8.1s3.5 0 4.8-.1c1.1-.1 1.6-.2 2-.3.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.1-.4.3-.9.3-2 .1-1.3.1-1.7.1-4.8s0-3.5-.1-4.8c-.1-1.1-.2-1.6-.3-2-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.4-.1-.9-.3-2-.3-1.3-.1-1.7-.1-4.8-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm6.2-8.3a1.1 1.1 0 1 1-2.3 0 1.1 1.1 0 0 1 2.3 0z"/></svg>
+      Instagram'da takip et
+    </a>
+    <a class="btn mail" id="mailbtn" href="mailto:emretas092@gmail.com?subject=BLOKADOO%20destek">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#fff" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm9 8.1L4.6 7.2v9.8h14.8V7.2L12 13.1zM5.3 7 12 11.8 18.7 7H5.3z"/></svg>
+      Destek / İletişim
+    </a>
+  </div>
+
   <small>© Eray Taş – Blokadoo</small>
+  <footer><a id="privacy" href="https://schwertle1.github.io/gizlilik-politikasi/" target="_blank" rel="noopener">Gizlilik Politikası</a></footer>
+
 <script>
 (function(){
+  // ONEMLI: Arka plan gorseli butonlara UYGULANMAZ (eski hata: buton metni okunmuyordu).
+  // Gorsel yalnizca sayfa govdesine eklenir.
   fetch('./bg64.txt').then(function(r){return r.ok?r.text():null}).then(function(b64){
     if(!b64) return;
     b64=b64.replace(/\s+/g,'');
     if(!b64) return;
-    var url='data:image/jpeg;base64,'+b64;
-    document.body.style.backgroundImage='url('+url+')';
-    var ig=document.getElementById('igbtn');
-    if(ig) ig.style.backgroundImage='url('+url+')';
+    document.body.style.backgroundImage='url("data:image/jpeg;base64,'+b64+'")';
   }).catch(function(){});
 })();
 </script>
